@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace TheBookShelf
+namespace Lab3TheBookShelf
 {
     public partial class ButikinfoBöckerPerGenre
     {

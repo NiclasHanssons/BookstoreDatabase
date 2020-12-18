@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 #nullable disable
 
-namespace TheBookShelf
+namespace Lab3TheBookShelf
 {
-    [DebuggerDisplay("{Titel}")]
-
     public partial class Böcker
     {
         public Böcker()
         {
+            FörfattareBöckers = new HashSet<FörfattareBöcker>();
             LagerSaldos = new HashSet<LagerSaldo>();
         }
 
@@ -33,9 +30,7 @@ namespace TheBookShelf
         public virtual Förlag Förlags { get; set; }
         public virtual Genrer Genre { get; set; }
         public virtual Översättare Översättare { get; set; }
+        public virtual ICollection<FörfattareBöcker> FörfattareBöckers { get; set; }
         public virtual ICollection<LagerSaldo> LagerSaldos { get; set; }
-
-        public virtual ICollection<FörfattareBöcker> Författare { get; set; }
-
     }
 }

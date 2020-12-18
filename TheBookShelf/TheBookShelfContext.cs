@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace TheBookShelf
+namespace Lab3TheBookShelf
 {
     public partial class TheBookShelfContext : DbContext
     {
@@ -31,12 +31,16 @@ namespace TheBookShelf
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Kolla hur jag flyttar ut denna stringen till en säkrare plats
-            optionsBuilder.UseSqlServer("Server=localhost;Database=TheBookShelf;Trusted_Connection=True;");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("data source=localhost;Database=TheBookShelf;Trusted_Connection=True;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
             modelBuilder.Entity<Butiker>(entity =>
             {
                 entity.ToTable("Butiker");
@@ -175,7 +179,7 @@ namespace TheBookShelf
 
             modelBuilder.Entity<FörfattareBöcker>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.FörfattareId, e.Isbn });
 
                 entity.ToTable("FörfattareBöcker");
 
@@ -184,13 +188,13 @@ namespace TheBookShelf
                 entity.Property(e => e.Isbn).HasColumnName("ISBN");
 
                 entity.HasOne(d => d.Författare)
-                    .WithMany()
+                    .WithMany(p => p.FörfattareBöckers)
                     .HasForeignKey(d => d.FörfattareId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_FörfattareBöcker_Författare");
 
-                entity.HasOne(d => d.IsbnFörfattare)
-                    .WithMany()
+                entity.HasOne(d => d.IsbnNavigation)
+                    .WithMany(p => p.FörfattareBöckers)
                     .HasForeignKey(d => d.Isbn)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_FörfattareBöcker_Böcker");
@@ -295,7 +299,7 @@ namespace TheBookShelf
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_LagerSaldo_Butiker");
 
-                entity.HasOne(d => d.IsbnSaldo)
+                entity.HasOne(d => d.IsbnNavigation)
                     .WithMany(p => p.LagerSaldos)
                     .HasForeignKey(d => d.Isbn)
                     .OnDelete(DeleteBehavior.ClientSetNull)

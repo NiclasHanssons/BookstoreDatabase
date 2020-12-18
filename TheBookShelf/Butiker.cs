@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 #nullable disable
 
-namespace TheBookShelf
+namespace Lab3TheBookShelf
 {
-    [DebuggerDisplay("{Namn}")]
-
     public partial class Butiker
     {
         public Butiker()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace TheBookShelf
+namespace Lab3TheBookShelf
 {
     public partial class LagerSaldo
     {
@@ -12,7 +12,6 @@ namespace TheBookShelf
         public int? Antal { get; set; }
 
         public virtual Butiker Butik { get; set; }
-        public virtual Böcker IsbnSaldo { get; set; }
-
+        public virtual Böcker IsbnNavigation { get; set; }
     }
 }
