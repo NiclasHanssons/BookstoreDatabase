@@ -33,7 +33,7 @@
             this.Författare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Utgivningsdatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pris = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenreID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sidor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BetygAvNiclas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FörlagsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,11 +76,11 @@
             this.Pris.Name = "Pris";
             this.Pris.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // GenreID
+            // GenreId
             // 
-            this.GenreID.HeaderText = "GenreID";
-            this.GenreID.Name = "GenreID";
-            this.GenreID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GenreId.HeaderText = "GenreId";
+            this.GenreId.Name = "GenreId";
+            this.GenreId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Sidor
             // 
@@ -130,13 +130,9 @@
             this.Språk.Name = "Språk";
             this.Språk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // DataGridViewBooks
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            // 
             // dataGridViewUcBooks
             // 
+            this.dataGridViewUcBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewUcBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUcBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ISBN,
@@ -144,7 +140,7 @@
             this.Författare,
             this.Utgivningsdatum,
             this.Pris,
-            this.GenreID,
+            this.GenreId,
             this.Sidor,
             this.BetygAvNiclas,
             this.FörlagsID,
@@ -157,12 +153,17 @@
             this.dataGridViewUcBooks.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewUcBooks.Name = "dataGridViewUcBooks";
             this.dataGridViewUcBooks.RowHeadersVisible = false;
-            this.dataGridViewUcBooks.Size = new System.Drawing.Size(739, 310);
+            this.dataGridViewUcBooks.Size = new System.Drawing.Size(739, 303);
             this.dataGridViewUcBooks.TabIndex = 0;
             this.dataGridViewUcBooks.Text = "dataGridView1";
+            // 
+            // DataGridViewBooks
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridViewUcBooks);
             this.Name = "DataGridViewBooks";
-            this.Size = new System.Drawing.Size(739, 310);
+            this.Size = new System.Drawing.Size(739, 303);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUcBooks)).EndInit();
             this.ResumeLayout(false);
 
@@ -176,7 +177,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Författare;
         private System.Windows.Forms.DataGridViewTextBoxColumn Utgivningsdatum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pris;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GenreID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenreId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sidor;
         private System.Windows.Forms.DataGridViewTextBoxColumn BetygAvNiclas;
         private System.Windows.Forms.DataGridViewTextBoxColumn FörlagsID;

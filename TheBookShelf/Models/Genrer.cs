@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 #nullable disable
 
 namespace TheBookShelf
 {
-    [DebuggerDisplay("{Namn}")]
-
     public partial class Genrer
     {
         public Genrer()

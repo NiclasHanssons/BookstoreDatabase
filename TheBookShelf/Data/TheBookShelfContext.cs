@@ -1,4 +1,5 @@
 ﻿using System;
+using TheBookShelf;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -175,7 +176,7 @@ namespace TheBookShelf
 
             modelBuilder.Entity<FörfattareBöcker>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(fb => new { fb.FörfattareId, fb.Isbn });
 
                 entity.ToTable("FörfattareBöcker");
 
@@ -184,13 +185,13 @@ namespace TheBookShelf
                 entity.Property(e => e.Isbn).HasColumnName("ISBN");
 
                 entity.HasOne(d => d.Författare)
-                    .WithMany()
+                    .WithMany(f => f.FörfattareBöckers)
                     .HasForeignKey(d => d.FörfattareId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_FörfattareBöcker_Författare");
 
                 entity.HasOne(d => d.IsbnFörfattare)
-                    .WithMany()
+                    .WithMany(isbnf => isbnf.FörfattareBöckers)
                     .HasForeignKey(d => d.Isbn)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_FörfattareBöcker_Böcker");
