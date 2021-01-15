@@ -20,21 +20,16 @@ namespace TheBookShelf
         public TextBox butikIdBox;
         public ComboBox comboBookAddRemove;
 
-        public UserControlTreeView(DataGridView dataGridView, TextBox adress, TextBox stad, TextBox land, TextBox butikId, ComboBox bookAddRemove)
+        public void UpdateTreeView()
         {
-            InitializeComponent();
-
-            comboBookAddRemove = bookAddRemove;
-            gridView = dataGridView;
-            adressBox = adress;
-            stadBox = stad;
-            landBox = land;
-            butikIdBox = butikId;
+            treeViewUcButiker.Nodes.Clear();
+            treeViewFörfattare.Nodes.Clear();
+            treeViewBöcker.Nodes.Clear();
 
             using var db = new TheBookShelfContext();
             if (db.Database.CanConnect())
             {
-                var stores = db.Butikers
+                var stores = db.Butiker
                     .Include(stores => stores.LagerSaldos)
                     .ThenInclude(LagerSaldos => LagerSaldos.IsbnSaldo)
                     .ToList();
@@ -42,13 +37,7 @@ namespace TheBookShelf
                 var books = db.Böckers.ToList();
                 var stocks = db.LagerSaldos.ToList();
                 var authors = db.Författares.ToList();
-
                 var authorsBooks = db.FörfattareBöckers.ToList();
-
-                //var publishers = db.Förlags.ToList();
-                //var genrers = db.Genrers.ToList();
-                //var customers = db.Kunders.ToList();
-                //var translators = db.Översättares.ToList();
 
                 foreach (var store in stores)
                 {
@@ -104,6 +93,25 @@ namespace TheBookShelf
             }
         }
 
+        public UserControlTreeView(DataGridView dataGridView, TextBox adress, TextBox stad, TextBox land, TextBox butikId, ComboBox bookAddRemove, Form1 form1)
+        {
+            InitializeComponent();
+
+            comboBookAddRemove = bookAddRemove;
+            gridView = dataGridView;
+            adressBox = adress;
+            stadBox = stad;
+            landBox = land;
+            butikIdBox = butikId;
+
+            form1.UpdateTreeView += Form1_UpdateTreeView;
+        }
+
+        private void Form1_UpdateTreeView(object sender, EventArgs e)
+        {
+            UpdateTreeView();
+        }
+
         private void TreeViewUcButiker_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
 
@@ -114,42 +122,29 @@ namespace TheBookShelf
                 landBox.Text = butiker.Land;
                 butikIdBox.Text = butiker.Id.ToString();
 
-
-
                 using var db = new TheBookShelfContext();
                 if (db.Database.CanConnect())
                 {
-
-                    var stores = db.Butikers
+                    var stores = db.Butiker
                         .Include(stores => stores.LagerSaldos)
                         .ThenInclude(LagerSaldos => LagerSaldos.IsbnSaldo)
                         .ToList();
-
-                    var authorsBooks = db.FörfattareBöckers.ToList();
 
                     var books = db.Böckers
                         .Include(books => books.LagerSaldos)
                         .ToList();
 
+                    var authorsBooks = db.FörfattareBöckers.ToList();
                     var stocks = db.LagerSaldos.ToList();
                     var authors = db.Författares.ToList();
-                    var publishers = db.Förlags.ToList();
-                    var genrers = db.Genrers.ToList();
-                    var customers = db.Kunders.ToList();
-                    var translators = db.Översättares.ToList();
-
-
-
-
-                    //comboBookAddRemove.Items.Clear();
-
-                    ////Lägga till böcker i combobox, fel då det inte blir ett objekt
-                    //foreach (var book in butiker.LagerSaldos)
-                    //{
-                    //    comboBookAddRemove.Items.Add();
-                    //}
 
                     gridView.Rows.Clear();
+                    comboBookAddRemove.Items.Clear();
+
+                    foreach (var book in butiker.LagerSaldos)
+                    {
+                        comboBookAddRemove.Items.Add(book.IsbnSaldo);
+                    }
 
                     foreach (var book in butiker.LagerSaldos)
                     {
@@ -190,25 +185,11 @@ namespace TheBookShelf
                     }
                 }
             }
-
         }
 
-        private void treeViewUcButiker_KeyDown(object sender, KeyEventArgs e)
+        private void UserControlTreeView_Load(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
-            {
-                if (treeViewUcButiker.SelectedNode.Tag is Butiker butiker)
-                {
-                    MessageBox.Show("Delete pressed on Butiker!");
-                }
-
-                //Fungerar inte
-                //if (treeViewUcButiker.SelectedNode)
-                //{
-                //    MessageBox.Show("Delete pressed on Böcker!");
-
-                //}
-            }
+            UpdateTreeView();
         }
     }
 }

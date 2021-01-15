@@ -18,7 +18,7 @@ namespace TheBookShelf
         {
         }
 
-        public virtual DbSet<Butiker> Butikers { get; set; }
+        public virtual DbSet<Butiker> Butiker { get; set; }
         public virtual DbSet<ButikinfoBöckerPerGenre> ButikinfoBöckerPerGenres { get; set; }
         public virtual DbSet<Böcker> Böckers { get; set; }
         public virtual DbSet<Författare> Författares { get; set; }
@@ -32,7 +32,6 @@ namespace TheBookShelf
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Kolla hur jag flyttar ut denna stringen till en säkrare plats
             optionsBuilder.UseSqlServer("Server=localhost;Database=TheBookShelf;Trusted_Connection=True;");
         }
 

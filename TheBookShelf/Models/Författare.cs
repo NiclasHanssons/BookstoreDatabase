@@ -20,5 +20,10 @@ namespace TheBookShelf
         public string Nationalitet { get; set; }
 
         public virtual ICollection<FörfattareBöcker> FörfattareBöckers { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Förnamn} {Efternamn}"; 
+        }
     }
 }

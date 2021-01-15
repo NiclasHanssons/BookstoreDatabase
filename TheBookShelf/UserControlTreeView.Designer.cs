@@ -72,7 +72,6 @@
             this.treeViewUcButiker.Size = new System.Drawing.Size(331, 527);
             this.treeViewUcButiker.TabIndex = 0;
             this.treeViewUcButiker.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeViewUcButiker_NodeMouseClick);
-            this.treeViewUcButiker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeViewUcButiker_KeyDown);
             // 
             // tabPageFörfattare
             // 
@@ -117,6 +116,7 @@
             this.Controls.Add(this.tabControlTreeView);
             this.Name = "UserControlTreeView";
             this.Size = new System.Drawing.Size(345, 561);
+            this.Load += new System.EventHandler(this.UserControlTreeView_Load);
             this.tabControlTreeView.ResumeLayout(false);
             this.tabPageButiker.ResumeLayout(false);
             this.tabPageFörfattare.ResumeLayout(false);

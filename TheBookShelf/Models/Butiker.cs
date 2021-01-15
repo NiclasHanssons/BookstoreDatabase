@@ -21,5 +21,10 @@ namespace TheBookShelf
 
         public virtual ICollection<Kunder> Kunders { get; set; }
         public virtual ICollection<LagerSaldo> LagerSaldos { get; set; }
+
+        public override string ToString()
+        {
+            return Namn;
+        }
     }
 }

@@ -30,6 +30,11 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.labelUpdateBookStock = new System.Windows.Forms.Label();
+            this.buttonEditRemoveBook = new System.Windows.Forms.Button();
+            this.buttonEditRemoveAuthor = new System.Windows.Forms.Button();
+            this.buttonAddBook = new System.Windows.Forms.Button();
+            this.buttonAddAuthor = new System.Windows.Forms.Button();
             this.Remove = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxAmount = new System.Windows.Forms.TextBox();
@@ -84,6 +89,11 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.labelUpdateBookStock);
+            this.splitContainer2.Panel1.Controls.Add(this.buttonEditRemoveBook);
+            this.splitContainer2.Panel1.Controls.Add(this.buttonEditRemoveAuthor);
+            this.splitContainer2.Panel1.Controls.Add(this.buttonAddBook);
+            this.splitContainer2.Panel1.Controls.Add(this.buttonAddAuthor);
             this.splitContainer2.Panel1.Controls.Add(this.Remove);
             this.splitContainer2.Panel1.Controls.Add(this.buttonAdd);
             this.splitContainer2.Panel1.Controls.Add(this.textBoxAmount);
@@ -103,11 +113,59 @@
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.Text = "splitContainer2";
             // 
+            // labelUpdateBookStock
+            // 
+            this.labelUpdateBookStock.AutoSize = true;
+            this.labelUpdateBookStock.Location = new System.Drawing.Point(361, 126);
+            this.labelUpdateBookStock.Name = "labelUpdateBookStock";
+            this.labelUpdateBookStock.Size = new System.Drawing.Size(119, 15);
+            this.labelUpdateBookStock.TabIndex = 18;
+            this.labelUpdateBookStock.Text = "Uppdatera lagerslado";
+            // 
+            // buttonEditRemoveBook
+            // 
+            this.buttonEditRemoveBook.Location = new System.Drawing.Point(534, 211);
+            this.buttonEditRemoveBook.Name = "buttonEditRemoveBook";
+            this.buttonEditRemoveBook.Size = new System.Drawing.Size(177, 37);
+            this.buttonEditRemoveBook.TabIndex = 17;
+            this.buttonEditRemoveBook.Text = "Redigera/Ta bort bok";
+            this.buttonEditRemoveBook.UseVisualStyleBackColor = true;
+            // 
+            // buttonEditRemoveAuthor
+            // 
+            this.buttonEditRemoveAuthor.Location = new System.Drawing.Point(534, 168);
+            this.buttonEditRemoveAuthor.Name = "buttonEditRemoveAuthor";
+            this.buttonEditRemoveAuthor.Size = new System.Drawing.Size(177, 37);
+            this.buttonEditRemoveAuthor.TabIndex = 16;
+            this.buttonEditRemoveAuthor.Text = "Redigera/Ta bort författare";
+            this.buttonEditRemoveAuthor.UseVisualStyleBackColor = true;
+            this.buttonEditRemoveAuthor.Click += new System.EventHandler(this.ButtonEditRemoveAuthor_Click);
+            // 
+            // buttonAddBook
+            // 
+            this.buttonAddBook.Location = new System.Drawing.Point(534, 85);
+            this.buttonAddBook.Name = "buttonAddBook";
+            this.buttonAddBook.Size = new System.Drawing.Size(177, 37);
+            this.buttonAddBook.TabIndex = 15;
+            this.buttonAddBook.Text = "Lägg till/ta bort bok i butik";
+            this.buttonAddBook.UseVisualStyleBackColor = true;
+            this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
+            // 
+            // buttonAddAuthor
+            // 
+            this.buttonAddAuthor.Location = new System.Drawing.Point(534, 125);
+            this.buttonAddAuthor.Name = "buttonAddAuthor";
+            this.buttonAddAuthor.Size = new System.Drawing.Size(177, 37);
+            this.buttonAddAuthor.TabIndex = 14;
+            this.buttonAddAuthor.Text = "Lägg till författare";
+            this.buttonAddAuthor.UseVisualStyleBackColor = true;
+            this.buttonAddAuthor.Click += new System.EventHandler(this.ButtonAddAuthor_Click);
+            // 
             // Remove
             // 
             this.Remove.Location = new System.Drawing.Point(361, 204);
             this.Remove.Name = "Remove";
-            this.Remove.Size = new System.Drawing.Size(75, 23);
+            this.Remove.Size = new System.Drawing.Size(119, 23);
             this.Remove.TabIndex = 13;
             this.Remove.Text = "Ta bort";
             this.Remove.UseVisualStyleBackColor = true;
@@ -117,17 +175,17 @@
             // 
             this.buttonAdd.Location = new System.Drawing.Point(361, 174);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.Size = new System.Drawing.Size(119, 23);
             this.buttonAdd.TabIndex = 12;
             this.buttonAdd.Text = "Lägg till";
             this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // textBoxAmount
             // 
             this.textBoxAmount.Location = new System.Drawing.Point(361, 144);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(100, 23);
+            this.textBoxAmount.Size = new System.Drawing.Size(119, 23);
             this.textBoxAmount.TabIndex = 11;
             // 
             // labelAntal
@@ -320,6 +378,11 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.Label labelAntal;
+        private System.Windows.Forms.Button buttonAddBook;
+        private System.Windows.Forms.Button buttonAddAuthor;
+        private System.Windows.Forms.Button buttonEditRemoveBook;
+        private System.Windows.Forms.Button buttonEditRemoveAuthor;
+        private System.Windows.Forms.Label labelUpdateBookStock;
     }
 }
 
