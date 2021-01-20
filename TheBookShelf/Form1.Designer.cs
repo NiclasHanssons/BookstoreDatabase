@@ -30,6 +30,9 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.buttonAddBookToDB = new System.Windows.Forms.Button();
+            this.labelDatabas = new System.Windows.Forms.Label();
+            this.labelButik = new System.Windows.Forms.Label();
             this.labelUpdateBookStock = new System.Windows.Forms.Label();
             this.buttonEditRemoveBook = new System.Windows.Forms.Button();
             this.buttonEditRemoveAuthor = new System.Windows.Forms.Button();
@@ -75,8 +78,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1664, 1011);
-            this.splitContainer1.SplitterDistance = 269;
+            this.splitContainer1.Size = new System.Drawing.Size(1664, 791);
+            this.splitContainer1.SplitterDistance = 268;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.Text = "splitContainer1";
             // 
@@ -89,6 +92,9 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.buttonAddBookToDB);
+            this.splitContainer2.Panel1.Controls.Add(this.labelDatabas);
+            this.splitContainer2.Panel1.Controls.Add(this.labelButik);
             this.splitContainer2.Panel1.Controls.Add(this.labelUpdateBookStock);
             this.splitContainer2.Panel1.Controls.Add(this.buttonEditRemoveBook);
             this.splitContainer2.Panel1.Controls.Add(this.buttonEditRemoveAuthor);
@@ -108,10 +114,38 @@
             this.splitContainer2.Panel1.Controls.Add(this.textBoxLand);
             this.splitContainer2.Panel1.Controls.Add(this.textBoxStad);
             this.splitContainer2.Panel1.Controls.Add(this.textBoxAdress);
-            this.splitContainer2.Size = new System.Drawing.Size(1391, 1011);
-            this.splitContainer2.SplitterDistance = 389;
+            this.splitContainer2.Size = new System.Drawing.Size(1392, 791);
+            this.splitContainer2.SplitterDistance = 303;
             this.splitContainer2.TabIndex = 0;
             this.splitContainer2.Text = "splitContainer2";
+            // 
+            // buttonAddBookToDB
+            // 
+            this.buttonAddBookToDB.Location = new System.Drawing.Point(717, 134);
+            this.buttonAddBookToDB.Name = "buttonAddBookToDB";
+            this.buttonAddBookToDB.Size = new System.Drawing.Size(177, 37);
+            this.buttonAddBookToDB.TabIndex = 21;
+            this.buttonAddBookToDB.Text = "Lägg till bok";
+            this.buttonAddBookToDB.UseVisualStyleBackColor = true;
+            this.buttonAddBookToDB.Click += new System.EventHandler(this.buttonAddBookToDB_Click);
+            // 
+            // labelDatabas
+            // 
+            this.labelDatabas.AutoSize = true;
+            this.labelDatabas.Location = new System.Drawing.Point(717, 30);
+            this.labelDatabas.Name = "labelDatabas";
+            this.labelDatabas.Size = new System.Drawing.Size(49, 15);
+            this.labelDatabas.TabIndex = 20;
+            this.labelDatabas.Text = "Databas";
+            // 
+            // labelButik
+            // 
+            this.labelButik.AutoSize = true;
+            this.labelButik.Location = new System.Drawing.Point(534, 30);
+            this.labelButik.Name = "labelButik";
+            this.labelButik.Size = new System.Drawing.Size(44, 15);
+            this.labelButik.TabIndex = 19;
+            this.labelButik.Text = "Butiker";
             // 
             // labelUpdateBookStock
             // 
@@ -124,16 +158,17 @@
             // 
             // buttonEditRemoveBook
             // 
-            this.buttonEditRemoveBook.Location = new System.Drawing.Point(534, 211);
+            this.buttonEditRemoveBook.Location = new System.Drawing.Point(717, 177);
             this.buttonEditRemoveBook.Name = "buttonEditRemoveBook";
             this.buttonEditRemoveBook.Size = new System.Drawing.Size(177, 37);
             this.buttonEditRemoveBook.TabIndex = 17;
             this.buttonEditRemoveBook.Text = "Redigera/Ta bort bok";
             this.buttonEditRemoveBook.UseVisualStyleBackColor = true;
+            this.buttonEditRemoveBook.Click += new System.EventHandler(this.buttonEditRemoveBook_Click);
             // 
             // buttonEditRemoveAuthor
             // 
-            this.buttonEditRemoveAuthor.Location = new System.Drawing.Point(534, 168);
+            this.buttonEditRemoveAuthor.Location = new System.Drawing.Point(717, 91);
             this.buttonEditRemoveAuthor.Name = "buttonEditRemoveAuthor";
             this.buttonEditRemoveAuthor.Size = new System.Drawing.Size(177, 37);
             this.buttonEditRemoveAuthor.TabIndex = 16;
@@ -143,17 +178,17 @@
             // 
             // buttonAddBook
             // 
-            this.buttonAddBook.Location = new System.Drawing.Point(534, 85);
+            this.buttonAddBook.Location = new System.Drawing.Point(534, 48);
             this.buttonAddBook.Name = "buttonAddBook";
             this.buttonAddBook.Size = new System.Drawing.Size(177, 37);
             this.buttonAddBook.TabIndex = 15;
-            this.buttonAddBook.Text = "Lägg till/ta bort bok i butik";
+            this.buttonAddBook.Text = "Lägg till/ta bort bok";
             this.buttonAddBook.UseVisualStyleBackColor = true;
             this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
             // 
             // buttonAddAuthor
             // 
-            this.buttonAddAuthor.Location = new System.Drawing.Point(534, 125);
+            this.buttonAddAuthor.Location = new System.Drawing.Point(717, 48);
             this.buttonAddAuthor.Name = "buttonAddAuthor";
             this.buttonAddAuthor.Size = new System.Drawing.Size(177, 37);
             this.buttonAddAuthor.TabIndex = 14;
@@ -199,6 +234,7 @@
             // 
             // comboBoxBookForLagersaldo
             // 
+            this.comboBoxBookForLagersaldo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBookForLagersaldo.FormattingEnabled = true;
             this.comboBoxBookForLagersaldo.Location = new System.Drawing.Point(57, 145);
             this.comboBoxBookForLagersaldo.Name = "comboBoxBookForLagersaldo";
@@ -218,6 +254,7 @@
             // 
             this.textBoxButikID.Location = new System.Drawing.Point(57, 27);
             this.textBoxButikID.Name = "textBoxButikID";
+            this.textBoxButikID.ReadOnly = true;
             this.textBoxButikID.Size = new System.Drawing.Size(48, 23);
             this.textBoxButikID.TabIndex = 7;
             // 
@@ -261,6 +298,7 @@
             // 
             this.textBoxLand.Location = new System.Drawing.Point(57, 114);
             this.textBoxLand.Name = "textBoxLand";
+            this.textBoxLand.ReadOnly = true;
             this.textBoxLand.Size = new System.Drawing.Size(236, 23);
             this.textBoxLand.TabIndex = 2;
             // 
@@ -268,6 +306,7 @@
             // 
             this.textBoxStad.Location = new System.Drawing.Point(57, 85);
             this.textBoxStad.Name = "textBoxStad";
+            this.textBoxStad.ReadOnly = true;
             this.textBoxStad.Size = new System.Drawing.Size(236, 23);
             this.textBoxStad.TabIndex = 1;
             // 
@@ -275,6 +314,7 @@
             // 
             this.textBoxAdress.Location = new System.Drawing.Point(57, 56);
             this.textBoxAdress.Name = "textBoxAdress";
+            this.textBoxAdress.ReadOnly = true;
             this.textBoxAdress.Size = new System.Drawing.Size(236, 23);
             this.textBoxAdress.TabIndex = 0;
             // 
@@ -335,7 +375,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1664, 1011);
+            this.ClientSize = new System.Drawing.Size(1664, 791);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -383,6 +423,9 @@
         private System.Windows.Forms.Button buttonEditRemoveBook;
         private System.Windows.Forms.Button buttonEditRemoveAuthor;
         private System.Windows.Forms.Label labelUpdateBookStock;
+        private System.Windows.Forms.Button buttonAddBookToDB;
+        private System.Windows.Forms.Label labelDatabas;
+        private System.Windows.Forms.Label labelButik;
     }
 }
 

@@ -57,6 +57,8 @@ namespace TheBookShelf
 
         private void buttonAddBook_Click(object sender, EventArgs e)
         {
+            if (comboBoxAddNewBook.SelectedItem == null) { return; }
+
             var book = comboBoxAddNewBook.SelectedItem as Böcker;
             var store = comboBoxSelectStore.SelectedItem as Butiker;
             var lagerSaldo = new LagerSaldo { Isbn = book.Isbn, ButikId = store.Id, Antal = 1 };
@@ -86,6 +88,8 @@ namespace TheBookShelf
 
         private void buttonRemoveBook_Click(object sender, EventArgs e)
         {
+            if (comboBoxSelectStoreRemove.SelectedItem == null) { return; }
+
             var book = comboBoxRemoveBook.SelectedItem as Böcker;
             var store = comboBoxSelectStoreRemove.SelectedItem as Butiker;
 

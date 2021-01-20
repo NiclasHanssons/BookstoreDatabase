@@ -52,6 +52,7 @@
             // 
             // comboBoxEditRemoveAuthorSelectAuthor
             // 
+            this.comboBoxEditRemoveAuthorSelectAuthor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEditRemoveAuthorSelectAuthor.FormattingEnabled = true;
             this.comboBoxEditRemoveAuthorSelectAuthor.Location = new System.Drawing.Point(79, 420);
             this.comboBoxEditRemoveAuthorSelectAuthor.Name = "comboBoxEditRemoveAuthorSelectAuthor";
@@ -72,29 +73,36 @@
             // 
             this.FirstName.HeaderText = "Förnamn";
             this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
             // 
             // LastName
             // 
             this.LastName.HeaderText = "Efternamn";
             this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
             // 
             // DateOfBirth
             // 
             this.DateOfBirth.HeaderText = "Födelsedatum";
             this.DateOfBirth.Name = "DateOfBirth";
+            this.DateOfBirth.ReadOnly = true;
             // 
             // Sex
             // 
             this.Sex.HeaderText = "Kön";
             this.Sex.Name = "Sex";
+            this.Sex.ReadOnly = true;
             // 
             // Nationality
             // 
             this.Nationality.HeaderText = "Nationalitet";
             this.Nationality.Name = "Nationality";
+            this.Nationality.ReadOnly = true;
             // 
             // dataGridViewEditRemoveAuthor
             // 
+            this.dataGridViewEditRemoveAuthor.AllowUserToAddRows = false;
+            this.dataGridViewEditRemoveAuthor.AllowUserToDeleteRows = false;
             this.dataGridViewEditRemoveAuthor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEditRemoveAuthor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEditRemoveAuthor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -105,6 +113,7 @@
             this.Nationality});
             this.dataGridViewEditRemoveAuthor.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewEditRemoveAuthor.Name = "dataGridViewEditRemoveAuthor";
+            this.dataGridViewEditRemoveAuthor.ReadOnly = true;
             this.dataGridViewEditRemoveAuthor.RowHeadersVisible = false;
             this.dataGridViewEditRemoveAuthor.Size = new System.Drawing.Size(595, 399);
             this.dataGridViewEditRemoveAuthor.TabIndex = 3;
@@ -118,6 +127,7 @@
             this.buttonEditRemoveAuthorUpdate.TabIndex = 4;
             this.buttonEditRemoveAuthorUpdate.Text = "Uppdatera";
             this.buttonEditRemoveAuthorUpdate.UseVisualStyleBackColor = true;
+            this.buttonEditRemoveAuthorUpdate.Click += new System.EventHandler(this.buttonEditRemoveAuthorUpdate_Click);
             // 
             // EditRemoveAuthorForm
             // 

@@ -33,6 +33,18 @@ namespace TheBookShelf
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
+            if (textBoxAmount.Text.Length == 0)
+            {
+                MessageBox.Show("Vänlig ange antal böcker.", "Felaktigt antal");
+                return;
+            }
+
+            if (textBoxButikID.Text == "")
+            {
+                MessageBox.Show("Vänlig välj en butik.", "Ingen butik vald");
+                return;
+            }
+
             using var db = new TheBookShelfContext();
             if (db.Database.CanConnect())
             {
@@ -52,9 +64,6 @@ namespace TheBookShelf
                 }
 
                 db.SaveChanges();
-                comboBoxBookForLagersaldo.SelectedIndex = -1;
-                comboBoxBookForLagersaldo.Items.Clear();
-                textBoxAmount.Text = "";
                 UpdateTreeView?.Invoke(this, null);
             }
 
@@ -66,6 +75,18 @@ namespace TheBookShelf
 
         private void Remove_Click(object sender, EventArgs e)
         {
+            if (textBoxAmount.Text.Length == 0)
+            {
+                MessageBox.Show("Vänlig ange antal böcker.", "Felaktigt antal");
+                return;
+            }
+
+            if (textBoxButikID.Text == "")
+            {
+                MessageBox.Show("Vänlig välj en butik.", "Ingen butik vald");
+                return;
+            }
+
             using var db = new TheBookShelfContext();
             if (db.Database.CanConnect())
             {
@@ -90,9 +111,6 @@ namespace TheBookShelf
                 }
 
                 db.SaveChanges();
-                comboBoxBookForLagersaldo.SelectedIndex = -1;
-                comboBoxBookForLagersaldo.Items.Clear();
-                textBoxAmount.Text = "";
                 UpdateTreeView?.Invoke(this, null);
             }
 
@@ -118,6 +136,18 @@ namespace TheBookShelf
         {
             AddNewBookForm addNewBook = new AddNewBookForm(UpdateTreeView);
             addNewBook.ShowDialog();
+        }
+
+        private void buttonAddBookToDB_Click(object sender, EventArgs e)
+        {
+            AddNewBookDBForm addNewBookToDB = new AddNewBookDBForm(UpdateTreeView);
+            addNewBookToDB.ShowDialog();
+        }
+
+        private void buttonEditRemoveBook_Click(object sender, EventArgs e)
+        {
+            EditRemoveBookForm bookFormEditRemove = new EditRemoveBookForm(UpdateTreeView);
+            bookFormEditRemove.ShowDialog();
         }
     }
 }

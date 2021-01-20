@@ -10,7 +10,6 @@ namespace TheBookShelf
         public event EventHandler UpdateTreeView;
 
         public void UpdateAuthorsInformation()
-
         {
             var authors = db.Författares.ToList();
 
@@ -59,5 +58,14 @@ namespace TheBookShelf
 
             UpdateAuthorsInformation();
         }
+
+        private void buttonEditRemoveAuthorUpdate_Click(object sender, EventArgs e)
+        {
+            var authorToEdit = comboBoxEditRemoveAuthorSelectAuthor.SelectedItem as Författare;
+            EditAuthorForm editAuthor = new EditAuthorForm(UpdateTreeView, authorToEdit, dataGridViewEditRemoveAuthor, comboBoxEditRemoveAuthorSelectAuthor);
+            editAuthor.ShowDialog();
+        }
+
+        
     }
 }

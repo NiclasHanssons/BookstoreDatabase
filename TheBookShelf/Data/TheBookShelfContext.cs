@@ -186,13 +186,13 @@ namespace TheBookShelf
                 entity.HasOne(d => d.Författare)
                     .WithMany(f => f.FörfattareBöckers)
                     .HasForeignKey(d => d.FörfattareId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_FörfattareBöcker_Författare");
 
                 entity.HasOne(d => d.IsbnFörfattare)
                     .WithMany(isbnf => isbnf.FörfattareBöckers)
                     .HasForeignKey(d => d.Isbn)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_FörfattareBöcker_Böcker");
             });
 

@@ -137,6 +137,9 @@ namespace TheBookShelf
                     var authorsBooks = db.FörfattareBöckers.ToList();
                     var stocks = db.LagerSaldos.ToList();
                     var authors = db.Författares.ToList();
+                    var genres = db.Genrers.ToList();
+                    var publishers = db.Förlags.ToList();
+                    var translators = db.Översättares.ToList();
 
                     gridView.Rows.Clear();
                     comboBookAddRemove.Items.Clear();
@@ -173,15 +176,36 @@ namespace TheBookShelf
                         gridView.Rows[rowIndex].Cells["Titel"].Value = book.IsbnSaldo.Titel;
                         gridView.Rows[rowIndex].Cells["Utgivningsdatum"].Value = book.IsbnSaldo.Utgivningsdatum.ToString("yyyy-MM-dd");
                         gridView.Rows[rowIndex].Cells["Pris"].Value = book.IsbnSaldo.Pris;
-                        gridView.Rows[rowIndex].Cells["GenreId"].Value = book.IsbnSaldo.GenreId;
                         gridView.Rows[rowIndex].Cells["Sidor"].Value = book.IsbnSaldo.Sidor;
                         gridView.Rows[rowIndex].Cells["BetygAvNiclas"].Value = book.IsbnSaldo.BetygAvNiclas;
                         gridView.Rows[rowIndex].Cells["Format"].Value = book.IsbnSaldo.Format;
                         gridView.Rows[rowIndex].Cells["Vikt"].Value = book.IsbnSaldo.Vikt;
-                        gridView.Rows[rowIndex].Cells["FörlagsId"].Value = book.IsbnSaldo.FörlagsId;
-                        gridView.Rows[rowIndex].Cells["ÖversättareId"].Value = book.IsbnSaldo.ÖversättareId;
                         gridView.Rows[rowIndex].Cells["Originaltitel"].Value = book.IsbnSaldo.Originaltitel;
                         gridView.Rows[rowIndex].Cells["Språk"].Value = book.IsbnSaldo.Språk;
+
+                        foreach (var genre in genres)
+                        {
+                            if (book.IsbnSaldo.GenreId == genre.Id)
+                            {
+                                gridView.Rows[rowIndex].Cells["GenreID"].Value = genre.Namn;
+                            }
+                        }
+
+                        foreach (var förlag in publishers)
+                        {
+                            if (book.IsbnSaldo.FörlagsId == förlag.Id)
+                            {
+                                gridView.Rows[rowIndex].Cells["FörlagsId"].Value = förlag.Namn;
+                            }
+                        }
+
+                        foreach (var översättare in translators)
+                        {
+                            if (book.IsbnSaldo.ÖversättareId == översättare.Id)
+                            {
+                                gridView.Rows[rowIndex].Cells["ÖversättareId"].Value = $"{översättare.Förnamn} {översättare.Efternamn}";
+                            }
+                        }
                     }
                 }
             }
