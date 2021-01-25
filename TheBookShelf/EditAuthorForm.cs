@@ -86,5 +86,10 @@ namespace TheBookShelf
                 MessageBox.Show("Vänligen fyll i alla uppgifter.", "Personuppgifter saknas");
             }
         }
+
+        private void buttonAbort_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

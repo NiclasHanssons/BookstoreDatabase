@@ -101,25 +101,37 @@ namespace TheBookShelf
 
         private void buttonRemoveBook_Click(object sender, EventArgs e)
         {
-            var bookToRemove = comboBoxBookToRemove.SelectedItem as Böcker;
-            
-            db.Remove(bookToRemove);
-            db.SaveChanges();
+            if (comboBoxBookToRemove.SelectedItem == null) { return; }
 
-            comboBoxBookToRemove.SelectedIndex = -1;
+            try
+            {
+                var bookToRemove = comboBoxBookToRemove.SelectedItem as Böcker;
 
-            UpdateTreeView?.Invoke(this, null);
+                db.Remove(bookToRemove);
+                db.SaveChanges();
 
-            comboBoxBookToRemove.Items.Clear();
-            dataGridViewBooksForEdit.Rows.Clear();
+                comboBoxBookToRemove.SelectedIndex = -1;
 
-            UpdateBooksInformation();
+                UpdateTreeView?.Invoke(this, null);
+
+                comboBoxBookToRemove.Items.Clear();
+                dataGridViewBooksForEdit.Rows.Clear();
+
+                UpdateBooksInformation();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Du kan inte ta bort en bok som finns i lager hos en butik. Vänligen hantera lagersaldot först", "Inte möjligt att ta bort bok");
+            }
+
         }
 
         private void buttonUpdateBook_Click(object sender, EventArgs e)
         {
+            if (comboBoxBookToRemove.SelectedItem == null) { return; }
+
             var bookToEdit = comboBoxBookToRemove.SelectedItem as Böcker;
-            EditBookForm editBook = new EditBookForm(UpdateTreeView, bookToEdit);
+            EditBookForm editBook = new EditBookForm(UpdateTreeView, bookToEdit, dataGridViewBooksForEdit, comboBoxBookToRemove);
             editBook.ShowDialog();
         }
     }

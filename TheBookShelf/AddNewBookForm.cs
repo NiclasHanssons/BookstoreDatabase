@@ -59,9 +59,24 @@ namespace TheBookShelf
         {
             if (comboBoxAddNewBook.SelectedItem == null) { return; }
 
+            var lagerBooks = db.LagerSaldos.ToList();
             var book = comboBoxAddNewBook.SelectedItem as Böcker;
             var store = comboBoxSelectStore.SelectedItem as Butiker;
             var lagerSaldo = new LagerSaldo { Isbn = book.Isbn, ButikId = store.Id, Antal = 1 };
+
+            //FEL, KOLLAR INTE RÄTT!
+            foreach (var bookInStore in lagerBooks)
+            {
+                if (bookInStore.ButikId == store.Id)
+                {
+                    if (bookInStore.IsbnSaldo.Isbn == book.Isbn)
+                    {
+                        MessageBox.Show("Bok finns redan tillaggd i butiken.", "Boken finns redan");
+                        return;
+                    }
+                }
+            }
+
             db.Entry(lagerSaldo).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
 
             db.Add(lagerSaldo);
@@ -89,6 +104,7 @@ namespace TheBookShelf
         private void buttonRemoveBook_Click(object sender, EventArgs e)
         {
             if (comboBoxSelectStoreRemove.SelectedItem == null) { return; }
+            if (comboBoxRemoveBook.SelectedItem == null) { return; }
 
             var book = comboBoxRemoveBook.SelectedItem as Böcker;
             var store = comboBoxSelectStoreRemove.SelectedItem as Butiker;

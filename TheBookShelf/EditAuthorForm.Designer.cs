@@ -45,18 +45,21 @@
             // dateTimePickerFödelsedatum
             // 
             this.dateTimePickerFödelsedatum.Location = new System.Drawing.Point(102, 71);
-            this.dateTimePickerFödelsedatum.MaxDate = new System.DateTime(2021, 1, 15, 0, 0, 0, 0);
+            this.dateTimePickerFödelsedatum.MaxDate = new System.DateTime(2021, 1, 22, 0, 0, 0, 0);
+            this.dateTimePickerFödelsedatum.MaximumSize = new System.Drawing.Size(232, 23);
+            this.dateTimePickerFödelsedatum.MinimumSize = new System.Drawing.Size(232, 23);
             this.dateTimePickerFödelsedatum.Name = "dateTimePickerFödelsedatum";
             this.dateTimePickerFödelsedatum.Size = new System.Drawing.Size(232, 23);
             this.dateTimePickerFödelsedatum.TabIndex = 13;
-            this.dateTimePickerFödelsedatum.Value = new System.DateTime(2021, 1, 15, 0, 0, 0, 0);
+            this.dateTimePickerFödelsedatum.Value = new System.DateTime(2021, 1, 22, 0, 0, 0, 0);
             // 
             // comboBoxSex
             // 
             this.comboBoxSex.FormattingEnabled = true;
             this.comboBoxSex.Items.AddRange(new object[] {
             "Kvinna",
-            "Man"});
+            "Man",
+            "Ickebinär"});
             this.comboBoxSex.Location = new System.Drawing.Point(102, 101);
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(232, 23);
@@ -70,6 +73,7 @@
             this.buttonAbort.TabIndex = 11;
             this.buttonAbort.Text = "Avbryt";
             this.buttonAbort.UseVisualStyleBackColor = true;
+            this.buttonAbort.Click += new System.EventHandler(this.buttonAbort_Click);
             // 
             // buttonUpdate
             // 
@@ -84,6 +88,7 @@
             // textBoxNationality
             // 
             this.textBoxNationality.Location = new System.Drawing.Point(102, 132);
+            this.textBoxNationality.MaxLength = 30;
             this.textBoxNationality.Name = "textBoxNationality";
             this.textBoxNationality.Size = new System.Drawing.Size(232, 23);
             this.textBoxNationality.TabIndex = 9;
@@ -91,6 +96,7 @@
             // textBoxLastname
             // 
             this.textBoxLastname.Location = new System.Drawing.Point(102, 42);
+            this.textBoxLastname.MaxLength = 100;
             this.textBoxLastname.Name = "textBoxLastname";
             this.textBoxLastname.Size = new System.Drawing.Size(232, 23);
             this.textBoxLastname.TabIndex = 6;
@@ -98,6 +104,7 @@
             // textBoxFirstname
             // 
             this.textBoxFirstname.Location = new System.Drawing.Point(102, 12);
+            this.textBoxFirstname.MaxLength = 100;
             this.textBoxFirstname.Name = "textBoxFirstname";
             this.textBoxFirstname.Size = new System.Drawing.Size(232, 23);
             this.textBoxFirstname.TabIndex = 5;
@@ -164,6 +171,8 @@
             this.Controls.Add(this.buttonAbort);
             this.Controls.Add(this.comboBoxSex);
             this.Controls.Add(this.dateTimePickerFödelsedatum);
+            this.MaximumSize = new System.Drawing.Size(374, 240);
+            this.MinimumSize = new System.Drawing.Size(374, 240);
             this.Name = "EditAuthorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Uppdatera Författare";

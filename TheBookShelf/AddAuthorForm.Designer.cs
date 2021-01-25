@@ -90,6 +90,7 @@
             // textBoxAddAuthorFirstName
             // 
             this.textBoxAddAuthorFirstName.Location = new System.Drawing.Point(105, 13);
+            this.textBoxAddAuthorFirstName.MaxLength = 100;
             this.textBoxAddAuthorFirstName.Name = "textBoxAddAuthorFirstName";
             this.textBoxAddAuthorFirstName.Size = new System.Drawing.Size(232, 23);
             this.textBoxAddAuthorFirstName.TabIndex = 5;
@@ -97,6 +98,7 @@
             // textBoxAddAuthorLastName
             // 
             this.textBoxAddAuthorLastName.Location = new System.Drawing.Point(105, 43);
+            this.textBoxAddAuthorLastName.MaxLength = 100;
             this.textBoxAddAuthorLastName.Name = "textBoxAddAuthorLastName";
             this.textBoxAddAuthorLastName.Size = new System.Drawing.Size(232, 23);
             this.textBoxAddAuthorLastName.TabIndex = 6;
@@ -104,6 +106,7 @@
             // textBoxAddAuthorNationality
             // 
             this.textBoxAddAuthorNationality.Location = new System.Drawing.Point(105, 133);
+            this.textBoxAddAuthorNationality.MaxLength = 30;
             this.textBoxAddAuthorNationality.Name = "textBoxAddAuthorNationality";
             this.textBoxAddAuthorNationality.Size = new System.Drawing.Size(232, 23);
             this.textBoxAddAuthorNationality.TabIndex = 9;
@@ -130,10 +133,12 @@
             // 
             // comboBoxSex
             // 
+            this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.FormattingEnabled = true;
             this.comboBoxSex.Items.AddRange(new object[] {
             "Kvinna",
-            "Man"});
+            "Man",
+            "Ickebinär"});
             this.comboBoxSex.Location = new System.Drawing.Point(105, 102);
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(232, 23);
@@ -142,11 +147,11 @@
             // dateTimePickerBirthdate
             // 
             this.dateTimePickerBirthdate.Location = new System.Drawing.Point(105, 72);
-            this.dateTimePickerBirthdate.MaxDate = new System.DateTime(2021, 1, 15, 0, 0, 0, 0);
+            this.dateTimePickerBirthdate.MaxDate = new System.DateTime(2021, 1, 21, 0, 0, 0, 0);
             this.dateTimePickerBirthdate.Name = "dateTimePickerBirthdate";
             this.dateTimePickerBirthdate.Size = new System.Drawing.Size(232, 23);
-            this.dateTimePickerBirthdate.TabIndex = 13;
-            this.dateTimePickerBirthdate.Value = new System.DateTime(2021, 1, 15, 0, 0, 0, 0);
+            this.dateTimePickerBirthdate.TabIndex = 5;
+            this.dateTimePickerBirthdate.Value = new System.DateTime(2021, 1, 21, 0, 0, 0, 0);
             // 
             // AddAuthorForm
             // 
@@ -165,6 +170,8 @@
             this.Controls.Add(this.labelAddAuthorDateOfBirth);
             this.Controls.Add(this.labelAddAuthorLastName);
             this.Controls.Add(this.labelAddAuthorFirstName);
+            this.MaximumSize = new System.Drawing.Size(374, 240);
+            this.MinimumSize = new System.Drawing.Size(374, 240);
             this.Name = "AddAuthorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Lägg till författare";

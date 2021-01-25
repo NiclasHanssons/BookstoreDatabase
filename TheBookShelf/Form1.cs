@@ -33,15 +33,21 @@ namespace TheBookShelf
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
+            if (textBoxButikID.Text == "")
+            {
+                MessageBox.Show("Vänlig välj en butik.", "Ingen butik vald");
+                return;
+            }
+
             if (textBoxAmount.Text.Length == 0)
             {
                 MessageBox.Show("Vänlig ange antal böcker.", "Felaktigt antal");
                 return;
             }
 
-            if (textBoxButikID.Text == "")
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBoxAmount.Text, "^[0-9]*$"))
             {
-                MessageBox.Show("Vänlig välj en butik.", "Ingen butik vald");
+                MessageBox.Show("Vänligen använd endast siffror", "Felaktig inmatning");
                 return;
             }
 
@@ -64,6 +70,7 @@ namespace TheBookShelf
                 }
 
                 db.SaveChanges();
+                textBoxAmount.Text = "";
                 UpdateTreeView?.Invoke(this, null);
             }
 
@@ -84,6 +91,12 @@ namespace TheBookShelf
             if (textBoxButikID.Text == "")
             {
                 MessageBox.Show("Vänlig välj en butik.", "Ingen butik vald");
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBoxAmount.Text, "^[0-9]*$"))
+            {
+                MessageBox.Show("Vänligen använd endast siffror", "Felaktig inmatning");
                 return;
             }
 
@@ -111,6 +124,7 @@ namespace TheBookShelf
                 }
 
                 db.SaveChanges();
+                textBoxAmount.Text = "";
                 UpdateTreeView?.Invoke(this, null);
             }
 

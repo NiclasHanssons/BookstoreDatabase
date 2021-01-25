@@ -139,6 +139,8 @@
             this.Controls.Add(this.buttonEditRemoveAuthorRemove);
             this.Controls.Add(this.comboBoxEditRemoveAuthorSelectAuthor);
             this.Controls.Add(this.labelEditRemoveAuthorSelectAuthor);
+            this.MaximumSize = new System.Drawing.Size(635, 510);
+            this.MinimumSize = new System.Drawing.Size(635, 510);
             this.Name = "EditRemoveAuthorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Redigera & ta bort författare";

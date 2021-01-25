@@ -63,6 +63,7 @@
             // comboBoxBookToRemove
             // 
             this.comboBoxBookToRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxBookToRemove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBookToRemove.FormattingEnabled = true;
             this.comboBoxBookToRemove.Location = new System.Drawing.Point(48, 396);
             this.comboBoxBookToRemove.Name = "comboBoxBookToRemove";
@@ -193,7 +194,8 @@
             // 
             this.dataGridViewBooksForEdit.AllowUserToAddRows = false;
             this.dataGridViewBooksForEdit.AllowUserToDeleteRows = false;
-            this.dataGridViewBooksForEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewBooksForEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewBooksForEdit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewBooksForEdit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -230,6 +232,7 @@
             this.Controls.Add(this.comboBoxBookToRemove);
             this.Controls.Add(this.labelBok);
             this.Controls.Add(this.dataGridViewBooksForEdit);
+            this.MinimumSize = new System.Drawing.Size(1290, 470);
             this.Name = "EditRemoveBookForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Redigera & ta bort bok";

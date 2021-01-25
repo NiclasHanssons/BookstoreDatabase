@@ -13,6 +13,25 @@ namespace TheBookShelf
             LagerSaldos = new HashSet<LagerSaldo>();
         }
 
+        public Böcker(
+            long isbn,
+            string titel,
+            DateTime utgivningsdatum,
+            int pris,
+            int genreId,
+            int sidor,
+            int förlagsId,
+            int vikt,
+            string format,
+            string språk,
+            int? betygAvNiclas = null,
+            int? översättareId = null,
+            string originaltitel = null)
+        {
+            FörfattareBöckers = new HashSet<FörfattareBöcker>();
+            LagerSaldos = new HashSet<LagerSaldo>();
+        }
+
         public long Isbn { get; set; }
         public string Titel { get; set; }
         public DateTime Utgivningsdatum { get; set; }

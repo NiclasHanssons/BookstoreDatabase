@@ -48,18 +48,20 @@
             this.tabControlTreeView.Controls.Add(this.tabPageBöcker);
             this.tabControlTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlTreeView.Location = new System.Drawing.Point(0, 0);
+            this.tabControlTreeView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlTreeView.Name = "tabControlTreeView";
             this.tabControlTreeView.SelectedIndex = 3;
-            this.tabControlTreeView.Size = new System.Drawing.Size(345, 561);
+            this.tabControlTreeView.Size = new System.Drawing.Size(394, 748);
             this.tabControlTreeView.TabIndex = 0;
             // 
             // tabPageButiker
             // 
             this.tabPageButiker.Controls.Add(this.treeViewUcButiker);
-            this.tabPageButiker.Location = new System.Drawing.Point(4, 24);
+            this.tabPageButiker.Location = new System.Drawing.Point(4, 29);
+            this.tabPageButiker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageButiker.Name = "tabPageButiker";
-            this.tabPageButiker.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageButiker.Size = new System.Drawing.Size(337, 533);
+            this.tabPageButiker.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageButiker.Size = new System.Drawing.Size(386, 715);
             this.tabPageButiker.TabIndex = 0;
             this.tabPageButiker.Text = "Butiker";
             this.tabPageButiker.UseVisualStyleBackColor = true;
@@ -67,19 +69,21 @@
             // treeViewUcButiker
             // 
             this.treeViewUcButiker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewUcButiker.Location = new System.Drawing.Point(3, 3);
+            this.treeViewUcButiker.Location = new System.Drawing.Point(3, 4);
+            this.treeViewUcButiker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeViewUcButiker.Name = "treeViewUcButiker";
-            this.treeViewUcButiker.Size = new System.Drawing.Size(331, 527);
+            this.treeViewUcButiker.Size = new System.Drawing.Size(380, 707);
             this.treeViewUcButiker.TabIndex = 0;
             this.treeViewUcButiker.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeViewUcButiker_NodeMouseClick);
             // 
             // tabPageFörfattare
             // 
             this.tabPageFörfattare.Controls.Add(this.treeViewFörfattare);
-            this.tabPageFörfattare.Location = new System.Drawing.Point(4, 24);
+            this.tabPageFörfattare.Location = new System.Drawing.Point(4, 29);
+            this.tabPageFörfattare.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageFörfattare.Name = "tabPageFörfattare";
-            this.tabPageFörfattare.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFörfattare.Size = new System.Drawing.Size(337, 533);
+            this.tabPageFörfattare.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageFörfattare.Size = new System.Drawing.Size(386, 715);
             this.tabPageFörfattare.TabIndex = 1;
             this.tabPageFörfattare.Text = "Författare";
             this.tabPageFörfattare.UseVisualStyleBackColor = true;
@@ -87,17 +91,19 @@
             // treeViewFörfattare
             // 
             this.treeViewFörfattare.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewFörfattare.Location = new System.Drawing.Point(3, 3);
+            this.treeViewFörfattare.Location = new System.Drawing.Point(3, 4);
+            this.treeViewFörfattare.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeViewFörfattare.Name = "treeViewFörfattare";
-            this.treeViewFörfattare.Size = new System.Drawing.Size(331, 527);
+            this.treeViewFörfattare.Size = new System.Drawing.Size(380, 707);
             this.treeViewFörfattare.TabIndex = 0;
             // 
             // tabPageBöcker
             // 
             this.tabPageBöcker.Controls.Add(this.treeViewBöcker);
-            this.tabPageBöcker.Location = new System.Drawing.Point(4, 24);
+            this.tabPageBöcker.Location = new System.Drawing.Point(4, 29);
+            this.tabPageBöcker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageBöcker.Name = "tabPageBöcker";
-            this.tabPageBöcker.Size = new System.Drawing.Size(337, 533);
+            this.tabPageBöcker.Size = new System.Drawing.Size(386, 715);
             this.tabPageBöcker.TabIndex = 2;
             this.tabPageBöcker.Text = "Böcker";
             // 
@@ -105,17 +111,19 @@
             // 
             this.treeViewBöcker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewBöcker.Location = new System.Drawing.Point(0, 0);
+            this.treeViewBöcker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeViewBöcker.Name = "treeViewBöcker";
-            this.treeViewBöcker.Size = new System.Drawing.Size(337, 533);
+            this.treeViewBöcker.Size = new System.Drawing.Size(386, 715);
             this.treeViewBöcker.TabIndex = 0;
             // 
             // UserControlTreeView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControlTreeView);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UserControlTreeView";
-            this.Size = new System.Drawing.Size(345, 561);
+            this.Size = new System.Drawing.Size(394, 748);
             this.Load += new System.EventHandler(this.UserControlTreeView_Load);
             this.tabControlTreeView.ResumeLayout(false);
             this.tabPageButiker.ResumeLayout(false);

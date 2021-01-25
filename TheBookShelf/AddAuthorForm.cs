@@ -41,8 +41,7 @@ namespace TheBookShelf
                 MessageBox.Show($"{firstName.Text} {lastName.Text} är tillaggd som författare.", "Ny författare tillaggd");
                 textBoxAddAuthorFirstName.Clear();
                 textBoxAddAuthorLastName.Clear();
-                //Återställ datetime
-                //dateTimePickerBirthdate
+                dateTimePickerBirthdate.ResetText();
                 comboBoxSex.SelectedIndex = -1;
                 textBoxAddAuthorNationality.Clear();
             }
@@ -59,6 +58,7 @@ namespace TheBookShelf
             textBoxAddAuthorLastName.Clear();
             comboBoxSex.SelectedIndex = -1;
             textBoxAddAuthorNationality.Clear();
+            dateTimePickerBirthdate.ResetText();
         }
     }
 }

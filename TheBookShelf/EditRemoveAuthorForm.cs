@@ -45,6 +45,10 @@ namespace TheBookShelf
 
         private void ButtonEditRemoveAuthorRemove_Click(object sender, EventArgs e)
         {
+            if (comboBoxEditRemoveAuthorSelectAuthor.SelectedItem == null) { return; }
+
+            try
+            { 
             var authorToRemove = comboBoxEditRemoveAuthorSelectAuthor.SelectedItem as Författare;
            
             db.Remove(authorToRemove);
@@ -57,10 +61,17 @@ namespace TheBookShelf
             dataGridViewEditRemoveAuthor.Rows.Clear();
 
             UpdateAuthorsInformation();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Författaren har böcker kopplade till sig, vänligen ta bort dessa böcker först.", "Felaktig hantering av författare");
+            }
         }
 
         private void buttonEditRemoveAuthorUpdate_Click(object sender, EventArgs e)
         {
+            if (comboBoxEditRemoveAuthorSelectAuthor.SelectedItem == null) { return; }
+
             var authorToEdit = comboBoxEditRemoveAuthorSelectAuthor.SelectedItem as Författare;
             EditAuthorForm editAuthor = new EditAuthorForm(UpdateTreeView, authorToEdit, dataGridViewEditRemoveAuthor, comboBoxEditRemoveAuthorSelectAuthor);
             editAuthor.ShowDialog();

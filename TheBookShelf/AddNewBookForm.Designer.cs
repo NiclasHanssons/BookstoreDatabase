@@ -122,6 +122,8 @@
             this.Controls.Add(this.labelAddNewBook);
             this.Controls.Add(this.comboBoxSelectStore);
             this.Controls.Add(this.comboBoxAddNewBook);
+            this.MaximumSize = new System.Drawing.Size(669, 136);
+            this.MinimumSize = new System.Drawing.Size(669, 136);
             this.Name = "AddNewBookForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Lägg till & ta bort bok";
