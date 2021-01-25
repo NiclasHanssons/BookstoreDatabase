@@ -19,6 +19,8 @@ namespace TheBookShelf
             InitializeComponent();
             UpdateTreeView = updateTreeView;
             db = new TheBookShelfContext();
+            dateTimePickerBirthdate.MaxDate = DateTime.Today;
+            dateTimePickerBirthdate.Value = DateTime.Today;
         }
 
         private void buttonFormAddAuthorAdd_Click(object sender, EventArgs e)
@@ -58,7 +60,7 @@ namespace TheBookShelf
             textBoxAddAuthorLastName.Clear();
             comboBoxSex.SelectedIndex = -1;
             textBoxAddAuthorNationality.Clear();
-            dateTimePickerBirthdate.ResetText();
+            dateTimePickerBirthdate.Value = DateTime.Today;
         }
     }
 }

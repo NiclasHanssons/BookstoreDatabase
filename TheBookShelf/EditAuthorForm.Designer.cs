@@ -44,12 +44,13 @@
             // 
             // dateTimePickerFödelsedatum
             // 
-            this.dateTimePickerFödelsedatum.Location = new System.Drawing.Point(102, 71);
+            this.dateTimePickerFödelsedatum.Location = new System.Drawing.Point(117, 95);
+            this.dateTimePickerFödelsedatum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePickerFödelsedatum.MaxDate = new System.DateTime(2021, 1, 22, 0, 0, 0, 0);
-            this.dateTimePickerFödelsedatum.MaximumSize = new System.Drawing.Size(232, 23);
-            this.dateTimePickerFödelsedatum.MinimumSize = new System.Drawing.Size(232, 23);
+            this.dateTimePickerFödelsedatum.MaximumSize = new System.Drawing.Size(265, 23);
+            this.dateTimePickerFödelsedatum.MinimumSize = new System.Drawing.Size(265, 23);
             this.dateTimePickerFödelsedatum.Name = "dateTimePickerFödelsedatum";
-            this.dateTimePickerFödelsedatum.Size = new System.Drawing.Size(232, 23);
+            this.dateTimePickerFödelsedatum.Size = new System.Drawing.Size(265, 23);
             this.dateTimePickerFödelsedatum.TabIndex = 13;
             this.dateTimePickerFödelsedatum.Value = new System.DateTime(2021, 1, 22, 0, 0, 0, 0);
             // 
@@ -60,16 +61,18 @@
             "Kvinna",
             "Man",
             "Ickebinär"});
-            this.comboBoxSex.Location = new System.Drawing.Point(102, 101);
+            this.comboBoxSex.Location = new System.Drawing.Point(117, 135);
+            this.comboBoxSex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxSex.Name = "comboBoxSex";
-            this.comboBoxSex.Size = new System.Drawing.Size(232, 23);
+            this.comboBoxSex.Size = new System.Drawing.Size(265, 28);
             this.comboBoxSex.TabIndex = 12;
             // 
             // buttonAbort
             // 
-            this.buttonAbort.Location = new System.Drawing.Point(178, 161);
+            this.buttonAbort.Location = new System.Drawing.Point(194, 215);
+            this.buttonAbort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonAbort.Name = "buttonAbort";
-            this.buttonAbort.Size = new System.Drawing.Size(75, 23);
+            this.buttonAbort.Size = new System.Drawing.Size(86, 31);
             this.buttonAbort.TabIndex = 11;
             this.buttonAbort.Text = "Avbryt";
             this.buttonAbort.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(259, 161);
+            this.buttonUpdate.Location = new System.Drawing.Point(286, 215);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.Size = new System.Drawing.Size(96, 31);
             this.buttonUpdate.TabIndex = 10;
             this.buttonUpdate.Text = "Uppdatera";
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -87,78 +91,81 @@
             // 
             // textBoxNationality
             // 
-            this.textBoxNationality.Location = new System.Drawing.Point(102, 132);
+            this.textBoxNationality.Location = new System.Drawing.Point(117, 176);
+            this.textBoxNationality.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxNationality.MaxLength = 30;
             this.textBoxNationality.Name = "textBoxNationality";
-            this.textBoxNationality.Size = new System.Drawing.Size(232, 23);
+            this.textBoxNationality.Size = new System.Drawing.Size(265, 27);
             this.textBoxNationality.TabIndex = 9;
             // 
             // textBoxLastname
             // 
-            this.textBoxLastname.Location = new System.Drawing.Point(102, 42);
+            this.textBoxLastname.Location = new System.Drawing.Point(117, 56);
+            this.textBoxLastname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxLastname.MaxLength = 100;
             this.textBoxLastname.Name = "textBoxLastname";
-            this.textBoxLastname.Size = new System.Drawing.Size(232, 23);
+            this.textBoxLastname.Size = new System.Drawing.Size(265, 27);
             this.textBoxLastname.TabIndex = 6;
             // 
             // textBoxFirstname
             // 
-            this.textBoxFirstname.Location = new System.Drawing.Point(102, 12);
+            this.textBoxFirstname.Location = new System.Drawing.Point(117, 16);
+            this.textBoxFirstname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxFirstname.MaxLength = 100;
             this.textBoxFirstname.Name = "textBoxFirstname";
-            this.textBoxFirstname.Size = new System.Drawing.Size(232, 23);
+            this.textBoxFirstname.Size = new System.Drawing.Size(265, 27);
             this.textBoxFirstname.TabIndex = 5;
             // 
             // labelNationality
             // 
             this.labelNationality.AutoSize = true;
-            this.labelNationality.Location = new System.Drawing.Point(10, 135);
+            this.labelNationality.Location = new System.Drawing.Point(11, 180);
             this.labelNationality.Name = "labelNationality";
-            this.labelNationality.Size = new System.Drawing.Size(72, 15);
+            this.labelNationality.Size = new System.Drawing.Size(91, 20);
             this.labelNationality.TabIndex = 4;
             this.labelNationality.Text = "Nationalitet:";
             // 
             // labelSex
             // 
             this.labelSex.AutoSize = true;
-            this.labelSex.Location = new System.Drawing.Point(10, 105);
+            this.labelSex.Location = new System.Drawing.Point(11, 140);
             this.labelSex.Name = "labelSex";
-            this.labelSex.Size = new System.Drawing.Size(31, 15);
+            this.labelSex.Size = new System.Drawing.Size(38, 20);
             this.labelSex.TabIndex = 3;
             this.labelSex.Text = "Kön:";
             // 
             // labelFödelsedatum
             // 
             this.labelFödelsedatum.AutoSize = true;
-            this.labelFödelsedatum.Location = new System.Drawing.Point(10, 75);
+            this.labelFödelsedatum.Location = new System.Drawing.Point(11, 100);
             this.labelFödelsedatum.Name = "labelFödelsedatum";
-            this.labelFödelsedatum.Size = new System.Drawing.Size(85, 15);
+            this.labelFödelsedatum.Size = new System.Drawing.Size(106, 20);
             this.labelFödelsedatum.TabIndex = 2;
             this.labelFödelsedatum.Text = "Födelsedatum:";
             // 
             // labelEfternamn
             // 
             this.labelEfternamn.AutoSize = true;
-            this.labelEfternamn.Location = new System.Drawing.Point(10, 45);
+            this.labelEfternamn.Location = new System.Drawing.Point(11, 60);
             this.labelEfternamn.Name = "labelEfternamn";
-            this.labelEfternamn.Size = new System.Drawing.Size(65, 15);
+            this.labelEfternamn.Size = new System.Drawing.Size(80, 20);
             this.labelEfternamn.TabIndex = 1;
             this.labelEfternamn.Text = "Efternamn:";
             // 
             // labelFörnamn
             // 
             this.labelFörnamn.AutoSize = true;
-            this.labelFörnamn.Location = new System.Drawing.Point(10, 15);
+            this.labelFörnamn.Location = new System.Drawing.Point(11, 20);
             this.labelFörnamn.Name = "labelFörnamn";
-            this.labelFörnamn.Size = new System.Drawing.Size(58, 15);
+            this.labelFörnamn.Size = new System.Drawing.Size(70, 20);
             this.labelFörnamn.TabIndex = 0;
             this.labelFörnamn.Text = "Förnamn:";
             // 
             // EditAuthorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 201);
+            this.ClientSize = new System.Drawing.Size(407, 257);
             this.Controls.Add(this.labelFörnamn);
             this.Controls.Add(this.labelEfternamn);
             this.Controls.Add(this.labelFödelsedatum);
@@ -171,8 +178,9 @@
             this.Controls.Add(this.buttonAbort);
             this.Controls.Add(this.comboBoxSex);
             this.Controls.Add(this.dateTimePickerFödelsedatum);
-            this.MaximumSize = new System.Drawing.Size(374, 240);
-            this.MinimumSize = new System.Drawing.Size(374, 240);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(425, 304);
+            this.MinimumSize = new System.Drawing.Size(425, 304);
             this.Name = "EditAuthorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Uppdatera Författare";

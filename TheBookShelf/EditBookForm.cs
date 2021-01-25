@@ -17,28 +17,24 @@ namespace TheBookShelf
         private List<Författare> AuthorToEdit;
         private List<FörfattareBöcker> AuthorBookToEdit;
         public List<int> authorIDintForRemove = new List<int>();
-        public DataGridView DataGridUpdate;
-        public ComboBox ComboBoxUpdate;
 
-        public EditBookForm(EventHandler updateTreeView, Böcker bookToEdit, DataGridView dataGridUpdate, ComboBox comboBoxUpdate)
+        public EditBookForm(EventHandler updateTreeView, Böcker bookToEdit)
         {
             InitializeComponent();
             UpdateTreeView = updateTreeView;
             BookToEdit = bookToEdit;
             db = new TheBookShelfContext();
-            DataGridUpdate = dataGridUpdate;
-            ComboBoxUpdate = comboBoxUpdate;
+
+            dateTimePickerUtgivningsdatum.MaxDate = DateTime.Today;
+            dateTimePickerUtgivningsdatum.Value = DateTime.Today;
 
             if (db.Database.CanConnect())
             {
                 AuthorToEdit = db.Författares.ToList();
                 AuthorBookToEdit = db.FörfattareBöckers.ToList();
-                //var authors = db.Författares.ToList();
                 var genreId = db.Genrers.ToList();
                 var förlagId = db.Förlags.ToList();
                 var översättareId = db.Översättares.ToList();
-                //var authorsBooks = db.FörfattareBöckers.ToList();
-
 
                 foreach (var author in AuthorToEdit)
                 {
@@ -174,26 +170,25 @@ namespace TheBookShelf
             }
 
             db = new TheBookShelfContext();
-            //Listor för att ta fram rätt ID för att uppdatera bok
+
             var bookDbValues = db.Böckers.ToList();
             var genreIdDbValues = db.Genrers.ToList();
             var förlagIdDbValues = db.Förlags.ToList();
             var översättareIdDbValues = db.Översättares.ToList();
 
-            //Variabler som skall matas in för att uppdatera bok
             var isbn = long.Parse(textBoxIsbn.Text);
             var titel = textBoxTitel.Text;
             var utgivningsdatum = dateTimePickerUtgivningsdatum;
             var pris = Int32.Parse(textBoxPris.Text);
             int genreId = 0;
             var sidor = Int32.Parse(textBoxSidor.Text);
-            
+
             int? betygAvNiclas = null;
             if (comboBoxBetygAvNiclas.SelectedItem != null)
             {
                 betygAvNiclas = Int32.Parse(comboBoxBetygAvNiclas.SelectedItem.ToString());
             }
-            
+
             var förlagId = 0;
             var vikt = Int32.Parse(textBoxVikt.Text);
             int? översättareId = null;
@@ -271,82 +266,6 @@ namespace TheBookShelf
             }
             db.SaveChanges();
 
-            var books = db.Böckers.ToList();
-            var genres = db.Genrers.ToList();
-            var publishers = db.Förlags.ToList();
-            var translators = db.Översättares.ToList();
-            var authors = db.Författares.ToList();
-            var authorBooks = db.FörfattareBöckers.ToList();
-
-            DataGridUpdate.Rows.Clear();
-
-            foreach (var book in books)
-            {
-                int rowIndex = DataGridUpdate.Rows.Add();
-                DataGridUpdate.Rows[rowIndex].Cells["ISBN"].Value = book.Isbn;
-                DataGridUpdate.Rows[rowIndex].Cells["Titel"].Value = book.Titel;
-                DataGridUpdate.Rows[rowIndex].Cells["Utgivningsdatum"].Value = book.Utgivningsdatum.ToString("yyyy-MM-dd");
-                DataGridUpdate.Rows[rowIndex].Cells["Pris"].Value = book.Pris;
-                DataGridUpdate.Rows[rowIndex].Cells["Sidor"].Value = book.Sidor;
-                DataGridUpdate.Rows[rowIndex].Cells["BetygAvNiclas"].Value = book.BetygAvNiclas;
-                DataGridUpdate.Rows[rowIndex].Cells["Format"].Value = book.Format;
-                DataGridUpdate.Rows[rowIndex].Cells["Vikt"].Value = book.Vikt;
-                DataGridUpdate.Rows[rowIndex].Cells["Originaltitel"].Value = book.Originaltitel;
-                DataGridUpdate.Rows[rowIndex].Cells["Språk"].Value = book.Språk;
-
-                string authorsOnSameBook = "";
-
-                foreach (var author in authorBooks)
-                {
-                    if (author.Isbn == book.Isbn)
-                    {
-                        if (authorsOnSameBook.Length == 0)
-                        {
-                            authorsOnSameBook += $"{author.Författare.Förnamn} {author.Författare.Efternamn}";
-                        }
-
-                        else
-                        {
-                            authorsOnSameBook += $", {author.Författare.Förnamn} {author.Författare.Efternamn}";
-                        }
-
-                        DataGridUpdate.Rows[rowIndex].Cells["Författare"].Value = authorsOnSameBook;
-                    }
-                }
-
-                foreach (var genre in genres)
-                {
-                    if (book.GenreId == genre.Id)
-                    {
-                        DataGridUpdate.Rows[rowIndex].Cells["GenreID"].Value = genre.Namn;
-                    }
-                }
-
-                foreach (var förlag in publishers)
-                {
-                    if (book.FörlagsId == förlag.Id)
-                    {
-                        DataGridUpdate.Rows[rowIndex].Cells["FörlagsId"].Value = förlag.Namn;
-                    }
-                }
-
-                foreach (var översättare in translators)
-                {
-                    if (book.ÖversättareId == översättare.Id)
-                    {
-                        DataGridUpdate.Rows[rowIndex].Cells["ÖversättareId"].Value = $"{översättare.Förnamn} {översättare.Efternamn}";
-                    }
-                }
-            }
-
-            ComboBoxUpdate.Items.Clear();
-
-            foreach (var book in books)
-            {
-                ComboBoxUpdate.Items.Add(book);
-            }
-            ComboBoxUpdate.Text = "";
-            ComboBoxUpdate.SelectedIndex = -1;
             UpdateTreeView?.Invoke(this, null);
 
             MessageBox.Show($"Information om boken: {BookToEdit.Titel} med ISBN: {BookToEdit.Isbn} är uppdaterad.", "Bok uppdaterad");

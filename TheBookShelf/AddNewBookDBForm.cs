@@ -20,6 +20,9 @@ namespace TheBookShelf
             UpdateTreeView = updateTreeView;
             db = new TheBookShelfContext();
 
+            dateTimePickerUtgivningsdatum.MaxDate = DateTime.Today;
+            dateTimePickerUtgivningsdatum.Value = DateTime.Today;
+
             if (db.Database.CanConnect())
             {
                 var authors = db.Författares.ToList();

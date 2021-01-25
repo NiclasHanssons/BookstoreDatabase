@@ -11,14 +11,17 @@ namespace TheBookShelf
 
         public void UpdateAuthorsInformation()
         {
+            db = new TheBookShelfContext();
+
             var authors = db.Författares.ToList();
+
+            comboBoxEditRemoveAuthorSelectAuthor.Items.Clear();
+            dataGridViewEditRemoveAuthor.Rows.Clear();
 
             foreach (var author in authors)
             {
                 comboBoxEditRemoveAuthorSelectAuthor.Items.Add(author);
             }
-
-            dataGridViewEditRemoveAuthor.Rows.Clear();
 
             foreach (var author in authors)
             {
@@ -35,12 +38,9 @@ namespace TheBookShelf
         {
             InitializeComponent();
             UpdateTreeView = updateTreeView;
-            db = new TheBookShelfContext();
-            
-            if (db.Database.CanConnect())
-            {
-                UpdateAuthorsInformation();
-            }
+
+            UpdateAuthorsInformation();
+
         }
 
         private void ButtonEditRemoveAuthorRemove_Click(object sender, EventArgs e)
@@ -48,21 +48,21 @@ namespace TheBookShelf
             if (comboBoxEditRemoveAuthorSelectAuthor.SelectedItem == null) { return; }
 
             try
-            { 
-            var authorToRemove = comboBoxEditRemoveAuthorSelectAuthor.SelectedItem as Författare;
-           
-            db.Remove(authorToRemove);
+            {
+                var authorToRemove = comboBoxEditRemoveAuthorSelectAuthor.SelectedItem as Författare;
 
-            comboBoxEditRemoveAuthorSelectAuthor.SelectedIndex = -1;
-            db.SaveChanges();
-            UpdateTreeView?.Invoke(this, null);
+                db.Remove(authorToRemove);
 
-            comboBoxEditRemoveAuthorSelectAuthor.Items.Clear();
-            dataGridViewEditRemoveAuthor.Rows.Clear();
+                comboBoxEditRemoveAuthorSelectAuthor.SelectedIndex = -1;
+                db.SaveChanges();
+                UpdateTreeView?.Invoke(this, null);
 
-            UpdateAuthorsInformation();
+                comboBoxEditRemoveAuthorSelectAuthor.Items.Clear();
+                dataGridViewEditRemoveAuthor.Rows.Clear();
+
+                UpdateAuthorsInformation();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Författaren har böcker kopplade till sig, vänligen ta bort dessa böcker först.", "Felaktig hantering av författare");
             }
@@ -73,10 +73,11 @@ namespace TheBookShelf
             if (comboBoxEditRemoveAuthorSelectAuthor.SelectedItem == null) { return; }
 
             var authorToEdit = comboBoxEditRemoveAuthorSelectAuthor.SelectedItem as Författare;
-            EditAuthorForm editAuthor = new EditAuthorForm(UpdateTreeView, authorToEdit, dataGridViewEditRemoveAuthor, comboBoxEditRemoveAuthorSelectAuthor);
+            EditAuthorForm editAuthor = new EditAuthorForm(UpdateTreeView, authorToEdit);
             editAuthor.ShowDialog();
+            UpdateAuthorsInformation();
         }
 
-        
+
     }
 }

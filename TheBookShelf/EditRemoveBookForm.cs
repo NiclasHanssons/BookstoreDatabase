@@ -16,19 +16,22 @@ namespace TheBookShelf
 
         public void UpdateBooksInformation()
         {
+            db = new TheBookShelfContext();
+
             var books = db.Böckers.ToList();
             var genres = db.Genrers.ToList();
             var publishers = db.Förlags.ToList();
             var translators = db.Översättares.ToList();
             var authors = db.Författares.ToList();
             var authorBooks = db.FörfattareBöckers.ToList();
+            
+            dataGridViewBooksForEdit.Rows.Clear();
+            comboBoxBookToRemove.Items.Clear();
 
             foreach (var book in books)
             {
                 comboBoxBookToRemove.Items.Add(book);
             }
-
-            dataGridViewBooksForEdit.Rows.Clear();
 
             foreach (var book in books)
             {
@@ -94,7 +97,6 @@ namespace TheBookShelf
         {
             InitializeComponent();
             UpdateTreeView = updateTreeView;
-            db = new TheBookShelfContext();
 
             UpdateBooksInformation();
         }
@@ -123,7 +125,6 @@ namespace TheBookShelf
             {
                 MessageBox.Show("Du kan inte ta bort en bok som finns i lager hos en butik. Vänligen hantera lagersaldot först", "Inte möjligt att ta bort bok");
             }
-
         }
 
         private void buttonUpdateBook_Click(object sender, EventArgs e)
@@ -131,8 +132,9 @@ namespace TheBookShelf
             if (comboBoxBookToRemove.SelectedItem == null) { return; }
 
             var bookToEdit = comboBoxBookToRemove.SelectedItem as Böcker;
-            EditBookForm editBook = new EditBookForm(UpdateTreeView, bookToEdit, dataGridViewBooksForEdit, comboBoxBookToRemove);
+            EditBookForm editBook = new EditBookForm(UpdateTreeView, bookToEdit);
             editBook.ShowDialog();
+            UpdateBooksInformation();
         }
     }
 }

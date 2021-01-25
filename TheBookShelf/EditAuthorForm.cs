@@ -14,17 +14,15 @@ namespace TheBookShelf
         TheBookShelfContext db;
         public event EventHandler UpdateTreeView;
         public Författare AuthorToEdit;
-        public DataGridView DataGridUpdate;
-        public ComboBox ComboBoxUpdate;
+        
 
-        public EditAuthorForm(EventHandler updateTreeView, Författare authorForEdit, DataGridView dataGridUpdate, ComboBox comboBoxUpdate)
+        public EditAuthorForm(EventHandler updateTreeView, Författare authorForEdit)
         {
             InitializeComponent();
             UpdateTreeView = updateTreeView;
             AuthorToEdit = authorForEdit;
             db = new TheBookShelfContext();
-            DataGridUpdate = dataGridUpdate;
-            ComboBoxUpdate = comboBoxUpdate;
+            dateTimePickerFödelsedatum.MaxDate = DateTime.Today;
 
             textBoxFirstname.Text = authorForEdit.Förnamn;
             textBoxLastname.Text = authorForEdit.Efternamn;
@@ -57,24 +55,7 @@ namespace TheBookShelf
                 }
 
                 db.SaveChanges();
-
-                ComboBoxUpdate.Items.Clear();
-                foreach (var author in authors)
-                {
-                    ComboBoxUpdate.Items.Add(author);
-                }
-
-                DataGridUpdate.Rows.Clear();
-
-                foreach (var author in authors)
-                {
-                    int rowIndex = DataGridUpdate.Rows.Add();
-                    DataGridUpdate.Rows[rowIndex].Cells["FirstName"].Value = author.Förnamn;
-                    DataGridUpdate.Rows[rowIndex].Cells["LastName"].Value = author.Efternamn;
-                    DataGridUpdate.Rows[rowIndex].Cells["DateOfBirth"].Value = author.Födelsedatum.ToString("yyyy-MM-dd");
-                    DataGridUpdate.Rows[rowIndex].Cells["Sex"].Value = author.Kön;
-                    DataGridUpdate.Rows[rowIndex].Cells["Nationality"].Value = author.Nationalitet;
-                }
+                
                 UpdateTreeView?.Invoke(this, null);
 
                 MessageBox.Show($"Information om {firstName.Text} {lastName.Text} är uppdaterad.", "Författare uppdaterad");
