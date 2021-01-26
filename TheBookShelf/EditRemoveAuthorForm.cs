@@ -38,9 +38,7 @@ namespace TheBookShelf
         {
             InitializeComponent();
             UpdateTreeView = updateTreeView;
-
             UpdateAuthorsInformation();
-
         }
 
         private void ButtonEditRemoveAuthorRemove_Click(object sender, EventArgs e)
@@ -77,7 +75,5 @@ namespace TheBookShelf
             editAuthor.ShowDialog();
             UpdateAuthorsInformation();
         }
-
-
     }
 }

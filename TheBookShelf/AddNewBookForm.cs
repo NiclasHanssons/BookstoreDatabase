@@ -64,7 +64,6 @@ namespace TheBookShelf
             var store = comboBoxSelectStore.SelectedItem as Butiker;
             var lagerSaldo = new LagerSaldo { Isbn = book.Isbn, ButikId = store.Id, Antal = 1 };
 
-            //FEL, KOLLAR INTE RÄTT!
             foreach (var bookInStore in lagerBooks)
             {
                 if (bookInStore.ButikId == store.Id)
@@ -81,6 +80,7 @@ namespace TheBookShelf
 
             db.Add(lagerSaldo);
             db.SaveChanges();
+            MessageBox.Show($"{book.Titel} är nu tillaggd i butiken.", "Bok tillaggd i butik");
             UpdateTreeView?.Invoke(this, null);
         }
 
@@ -119,6 +119,7 @@ namespace TheBookShelf
             comboBoxRemoveBook.SelectedIndex = -1;
             comboBoxRemoveBook.Items.Clear();
             db.SaveChanges();
+            MessageBox.Show($"{book.Titel} är nu borttagen från butiken.", "Bok borttagen från butik");
             UpdateTreeView?.Invoke(this, null);
         }
     }

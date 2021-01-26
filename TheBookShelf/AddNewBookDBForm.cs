@@ -14,6 +14,25 @@ namespace TheBookShelf
         TheBookShelfContext db;
         public event EventHandler UpdateTreeView;
 
+        private void ClearInformation()
+        {
+            textBoxIsbn.Clear();
+            textBoxTitel.Clear();
+            textBoxFormat.Clear();
+            textBoxOriginaltitel.Clear();
+            textBoxPris.Clear();
+            textBoxSidor.Clear();
+            textBoxSpråk.Clear();
+            textBoxVikt.Clear();
+            comboBoxBetygAvNiclas.SelectedItem = null;
+            comboBoxÖversättareID.SelectedItem = null;
+            comboBoxGenreID.SelectedItem = null;
+            comboBoxFörlagsID.SelectedItem = null;
+            listBoxFörfattare.Items.Clear();
+            comboBoxAddAuthor.SelectedItem = null;
+            dateTimePickerUtgivningsdatum.Value = DateTime.Today;
+        }
+
         public AddNewBookDBForm(EventHandler updateTreeView)
         {
             InitializeComponent();
@@ -54,6 +73,16 @@ namespace TheBookShelf
 
         private void buttonLäggTill_Click(object sender, EventArgs e)
         {
+            var bookIsbn = db.Böckers.ToList();
+            foreach (var book in bookIsbn)
+            {
+                if (textBoxIsbn.Text == book.Isbn.ToString())
+                {
+                    MessageBox.Show($"Bok med ISBN {textBoxIsbn.Text} finns redan.", "Felaktig inmatning");
+                    return;
+                }
+            }
+
             if (textBoxIsbn.Text.IndexOf('0', 0, 1) == 0)
             {
                 MessageBox.Show("ISBN kan inte börja med 0.", "Felaktig inmatning");
@@ -98,13 +127,17 @@ namespace TheBookShelf
                 return;
             }
 
-            //Listor för att ta fram rätt ID för att skapa ny bok
+            if (listBoxFörfattare.Items.Count == 0)
+            {
+                MessageBox.Show("Vänligen välj en författare för boken", "Felaktig inmatning");
+                return;
+            }
+
             var authorsDbValues = db.Författares.ToList();
             var genreIdDbValues = db.Genrers.ToList();
             var förlagIdDbValues = db.Förlags.ToList();
             var översättareIdDbValues = db.Översättares.ToList();
 
-            //Variabler som skall matas in i ny bok
             var isbn = long.Parse(textBoxIsbn.Text);
             var titel = textBoxTitel;
             var utgivningsdatum = dateTimePickerUtgivningsdatum;
@@ -161,7 +194,7 @@ namespace TheBookShelf
             }
 
             var nyBok = new Böcker
-            { 
+            {
                 Isbn = isbn,
                 Titel = titel.Text,
                 Utgivningsdatum = utgivningsdatum.Value,
@@ -179,7 +212,7 @@ namespace TheBookShelf
 
             db.Add(nyBok);
             db.SaveChanges();
-            
+
             for (int i = 0; i < authorIDint.Count; i++)
             {
                 var nyBokFörfattareBöcker = new FörfattareBöcker { FörfattareId = authorIDint[i], Isbn = isbn };
@@ -190,6 +223,7 @@ namespace TheBookShelf
 
             UpdateTreeView?.Invoke(this, null);
             MessageBox.Show($"Bok: {nyBok.Titel} med ISBN: {nyBok.Isbn} är tillaggd i databasen.", "Bok tillaggd");
+            ClearInformation();
         }
 
         private void buttonLäggTillFörfattare_Click(object sender, EventArgs e)
@@ -229,21 +263,7 @@ namespace TheBookShelf
 
         private void buttonRensa_Click(object sender, EventArgs e)
         {
-            textBoxIsbn.Clear();
-            textBoxTitel.Clear();
-            textBoxFormat.Clear();
-            textBoxOriginaltitel.Clear();
-            textBoxPris.Clear();
-            textBoxSidor.Clear();
-            textBoxSpråk.Clear();
-            textBoxVikt.Clear();
-            comboBoxBetygAvNiclas.SelectedItem = null;
-            comboBoxÖversättareID.SelectedItem = null;
-            comboBoxGenreID.SelectedItem = null;
-            comboBoxFörlagsID.SelectedItem = null;
-            listBoxFörfattare.Items.Clear();
-            comboBoxAddAuthor.SelectedItem = null;
-            dateTimePickerUtgivningsdatum.Value = DateTime.Today;
+            ClearInformation();
         }
     }
 }

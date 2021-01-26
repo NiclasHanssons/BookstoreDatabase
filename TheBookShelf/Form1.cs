@@ -28,7 +28,7 @@ namespace TheBookShelf
             treeView = new UserControlTreeView(dataGridViewBooks.dataGridViewBooksPanel2, textBoxAdress, textBoxStad, textBoxLand, textBoxButikID, comboBoxBookForLagersaldo, this);
             splitContainer1.Panel1.Controls.Add(treeView);
             treeView.Dock = DockStyle.Fill;
-           
+
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)
@@ -42,6 +42,12 @@ namespace TheBookShelf
             if (textBoxAmount.Text.Length == 0)
             {
                 MessageBox.Show("Vänlig ange antal böcker.", "Felaktigt antal");
+                return;
+            }
+
+            if (comboBoxBookForLagersaldo.SelectedItem == null)
+            {
+                MessageBox.Show("Vänlig välj en bok.", "Ingen bok vald");
                 return;
             }
 
@@ -70,6 +76,7 @@ namespace TheBookShelf
                 }
 
                 db.SaveChanges();
+                MessageBox.Show($"Du har laggt till {textBoxAmount.Text}st av {book.Titel}.", "Lagersaldo uppdaterat");
                 textBoxAmount.Text = "";
                 UpdateTreeView?.Invoke(this, null);
             }
@@ -82,17 +89,24 @@ namespace TheBookShelf
 
         private void Remove_Click(object sender, EventArgs e)
         {
+            if (textBoxButikID.Text == "")
+            {
+                MessageBox.Show("Vänlig välj en butik.", "Ingen butik vald");
+                return;
+            }
+
             if (textBoxAmount.Text.Length == 0)
             {
                 MessageBox.Show("Vänlig ange antal böcker.", "Felaktigt antal");
                 return;
             }
 
-            if (textBoxButikID.Text == "")
+            if (comboBoxBookForLagersaldo.SelectedItem == null)
             {
-                MessageBox.Show("Vänlig välj en butik.", "Ingen butik vald");
+                MessageBox.Show("Vänlig välj en bok.", "Ingen bok vald");
                 return;
             }
+
 
             if (!System.Text.RegularExpressions.Regex.IsMatch(textBoxAmount.Text, "^[0-9]*$"))
             {
@@ -107,7 +121,14 @@ namespace TheBookShelf
 
                 foreach (var bookSaldo in db.LagerSaldos)
                 {
-                    UpdateTreeView?.Invoke(this, null);
+                    if (bookSaldo.ButikId == int.Parse(textBoxButikID.Text) && book.Isbn == bookSaldo.Isbn)
+                    {
+                        if (Int32.Parse(textBoxAmount.Text) > bookSaldo.Antal)
+                        {
+                            MessageBox.Show("Du kan inte ta bort fler böcker än vad som finns i lager. Vänligen ändra antal.", "Felaktig inmatning");
+                            return;
+                        }
+                    }
 
                     if (bookSaldo.ButikId == int.Parse(textBoxButikID.Text) && book.Isbn == bookSaldo.Isbn && System.Text.RegularExpressions.Regex.IsMatch(textBoxAmount.Text, "^[0-9]*$"))
                     {
@@ -118,12 +139,8 @@ namespace TheBookShelf
                     }
                 }
 
-                if (!System.Text.RegularExpressions.Regex.IsMatch(textBoxAmount.Text, "^[0-9]*$"))
-                {
-                    MessageBox.Show("Vänligen använd endast siffror", "Felaktig inmatning");
-                }
-
                 db.SaveChanges();
+                MessageBox.Show($"Du har tagit bort {textBoxAmount.Text}st av {book.Titel}.", "Lagersaldo uppdaterat");
                 textBoxAmount.Text = "";
                 UpdateTreeView?.Invoke(this, null);
             }

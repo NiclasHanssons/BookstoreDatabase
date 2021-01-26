@@ -100,21 +100,7 @@ namespace TheBookShelf
             }
             db.Dispose();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (comboBoxAddFörfattare.SelectedItem == null) { return; }
-
-            if (listBoxFörfattareBok.Items.Contains(comboBoxAddFörfattare.SelectedItem.ToString()))
-            {
-                MessageBox.Show("Författaren är redan tillaggd.", "Felaktig inmatning");
-            }
-
-            else
-            {
-                listBoxFörfattareBok.Items.Add(comboBoxAddFörfattare.SelectedItem);
-            }
-        }
+        
 
         private void buttonTaBort_Click(object sender, EventArgs e)
         {
@@ -167,6 +153,12 @@ namespace TheBookShelf
             if (comboBoxFörlag.SelectedItem == null)
             {
                 MessageBox.Show("Vänligen välj ett förlag för boken", "Felaktig inmatning");
+            }
+
+            if (listBoxFörfattareBok.Items.Count == 0)
+            {
+                MessageBox.Show("Vänligen välj en författare för boken", "Felaktig inmatning");
+                return;
             }
 
             db = new TheBookShelfContext();
@@ -286,6 +278,28 @@ namespace TheBookShelf
         private void buttonAbort_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonLäggTill_Click(object sender, EventArgs e)
+        {
+            if (comboBoxAddFörfattare.SelectedItem == null) { return; }
+
+            if (listBoxFörfattareBok.Items.Contains(comboBoxAddFörfattare.SelectedItem.ToString()))
+            {
+                MessageBox.Show("Författaren är redan tillaggd.", "Felaktig inmatning");
+                return;
+            }
+
+            if (listBoxFörfattareBok.Items.Contains(comboBoxAddFörfattare.SelectedItem))
+            {
+                MessageBox.Show("Författaren är redan tillaggd.", "Felaktig inmatning");
+                return;
+            }
+
+            else
+            {
+                listBoxFörfattareBok.Items.Add(comboBoxAddFörfattare.SelectedItem);
+            }
         }
     }
 }

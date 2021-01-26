@@ -14,7 +14,6 @@ namespace TheBookShelf
         TheBookShelfContext db;
         public event EventHandler UpdateTreeView;
         public Författare AuthorToEdit;
-        
 
         public EditAuthorForm(EventHandler updateTreeView, Författare authorForEdit)
         {
@@ -23,7 +22,6 @@ namespace TheBookShelf
             AuthorToEdit = authorForEdit;
             db = new TheBookShelfContext();
             dateTimePickerFödelsedatum.MaxDate = DateTime.Today;
-
             textBoxFirstname.Text = authorForEdit.Förnamn;
             textBoxLastname.Text = authorForEdit.Efternamn;
             comboBoxSex.SelectedItem = authorForEdit.Kön;
